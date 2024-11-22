@@ -1,0 +1,13 @@
+import {Router} from "express";
+import * as userController from "./controller/user.controller.js";
+import { auth } from "../../middleware/auth.js";
+import {fileUpload,HME,fileValidation} from '../../services/multer.js';
+import cloudinaryUpload ,{ cloudinaryHME }  from "../../services/multerC.js";  
+import * as schema from "./user.validation.js";
+import { validation } from "../../middleware/validation.js";
+const router = Router();
+router.patch('/profilepic',auth,fileUpload('user/profile',fileValidation.image).array('image'),HME,userController.profilePic);
+router.patch('/coverPic',auth,cloudinaryUpload(fileValidation.image).single('image'),cloudinaryHME,validation(schema.coverPicSchema),userController.coverPic);
+router.get('/:id/profile',validation(schema.shareProfileSchema),userController.shareProfile);
+router.patch('/updatePassword',auth,validation(schema.updatePassword),userController.updatePassword);
+export default router;
