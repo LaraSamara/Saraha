@@ -1,6 +1,6 @@
 # Saraha
 
-Saraha is a Node.js-powered voting platform that offers secure authentication, dynamic message handling, and versatile post management features.
+Saraha is a Node.js-powered platform that offers secure authentication, dynamic message handling, and versatile post management features.
 
 ## 🌟 Features
 
